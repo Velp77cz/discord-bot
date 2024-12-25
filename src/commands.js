@@ -51,13 +51,13 @@ export const SHIP = {
   description: "Ship two users together, showing their love compatibility percentage and their ship name.",
   options: [
     {
-      name: "user1",
+      name: "kokot1",
       description: "First user.",
       type: CommandType.USER,
       required: true
     },
     {
-      name: "user2",
+      name: "kokot2",
       description: "User to ship",
       type: CommandType.USER,
       required: true
