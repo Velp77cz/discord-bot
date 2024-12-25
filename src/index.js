@@ -33,7 +33,7 @@ router.post("/", async (req, env, context) => {
       // Reply /string command (Bot will reply with the string the user entered)
         case C.STRING_COMMAND_EXAMPLE.name: {
           const string = getValue("text");
-          return reply(`Your string: ${string}`);
+          return reply(`Tvoje zprava: ${string}`);
         }
 
         // Reply /number command (Bot will reply with a random number between 0 and 100) (example command)
