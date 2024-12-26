@@ -65,13 +65,13 @@ router.post("/", async (req, env, context) => {
 
         // Reply /button command (Bot will reply with a button example message)
         case C.BUTTON_EXAMPLE.name: {
-          const message = "Bot message";
+          const message = "Oliver je kokot";
           const button = [];
           button.push({
             type: MessageComponentTypes.BUTTON,
             style: ButtonStyleTypes.LINK,
-            label: "Open Browser",
-            url: "https://example.com"
+            label: "duvody proj je kokot",
+            url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
           });
           return reply(message, {
             components: [{
@@ -161,8 +161,8 @@ router.post("/", async (req, env, context) => {
         // Extra funny command
         // Reply /ship command: Ship two users together, shows their "love" compatibility percentage and their ship name on an embed.
         case C.SHIP.name: {
-          const u1 = getValue("user1"); // First user value
-          const u2 = getValue("user2"); // User to ship value
+          const u1 = getValue("kokot1"); // First user value
+          const u2 = getValue("kokot2"); // User to ship value
           const message = "";
           const embeds = [];
           const p = getRandom({ min: 0, max: 100 });
@@ -178,6 +178,9 @@ router.post("/", async (req, env, context) => {
           return reply(message, {
             embeds
           });
+        }
+        case C.ROZVRH.name: {
+          
         }
         default:
           return error(400, "Unknown Type");

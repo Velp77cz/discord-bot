@@ -64,3 +64,9 @@ export const SHIP = {
     }
   ]
 };
+
+export const ROZVRH = {
+  name: "rozvrh",
+  description: "rozvrh",
+  options: []
+};
