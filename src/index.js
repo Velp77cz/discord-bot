@@ -6,6 +6,7 @@ import { AutoRouter, error, text } from "itty-router";
 import { create, reply, deferReply, deferUpdate } from "./interactions.js";
 import { getRandom } from "./functions.js";
 import { verifyKey, InteractionType, ButtonStyleTypes, MessageComponentTypes } from "discord-interactions";
+import { getStats, printStats } from "./lib/r6api.js";
 
 const router = AutoRouter();
 
@@ -182,8 +183,55 @@ router.post("/", async (req, env, context) => {
         case C.ROZVRH.name: {
           
         }
+        case C.JIDLO.name:{
+          
+        }
+
+
+
+
+        case C.STATS.name: {
+          // Send a loading message (defer reply)
+          await deferReply();
+
+          const followUpRequest = async () => {
+            try {
+              const playerName = getValue("kokot1");
+              const stats = await getStats(playerName);
+
+              if (!stats) {
+                return deferUpdate("Failed to fetch stats. Try again later.", { token });
+              }
+
+              console.log(stats);
+              const embedFields = printStats(stats);
+
+              return deferUpdate("Here are your stats:", {
+                token,
+                application_id: env.DISCORD_APPLICATION_ID,
+                embeds: [{
+                  color: 0xFB05EF,
+                  title: `Stats for ${playerName}`,
+                  description: "Rainbow Six Siege stats",
+                  fields: embedFields
+                }]
+              });
+            } catch (error) {
+              console.error("Error fetching stats:", error);
+              return deferUpdate("Error fetching stats. Please try again later.", { token });
+            }
+          };
+
+          context.waitUntil(followUpRequest()); // Handle it asynchronously
+          return; // Return immediately after deferring the reply
+}
+
+
+
+
+
         default:
-          return error(400, "Unknown Type");
+            return error(400, "Unknown Type");
       }
     });
   }

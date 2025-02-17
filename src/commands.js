@@ -70,3 +70,21 @@ export const ROZVRH = {
   description: "rozvrh",
   options: []
 };
+export const JIDLO = {
+  name: "jidlo",
+  description: "jidlo",
+  options: []
+};
+export const STATS = {
+  name: "stats",
+  description: "stats",
+  options: [
+    {
+      name: "kokot1",
+      description: "user",
+      type: CommandType.STRING,
+      required: true
+    }
+  ]
+};
+
